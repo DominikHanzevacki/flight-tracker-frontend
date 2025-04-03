@@ -1,0 +1,16 @@
+.anticon-yuque > svg {
+  fill: var(--color-fill);
+}
+
+.ant-menu-item {
+  color: var(--color-fill) !important;
+
+  &.ant-menu-item-selected {
+    background-color: var(--color-text) !important;
+    color: var(--color-fill) !important;
+  }
+}
+
+.ant-result-image {
+  margin: 0 !important;
+}

@@ -23,8 +23,32 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./src/*"
+      "@/*": [
+        "src/*"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@constants/*": [
+        "constants/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@interfaces/*": [
+        "interfaces/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
       ]
     }
   },
