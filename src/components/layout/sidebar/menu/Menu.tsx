@@ -7,10 +7,11 @@ export const AppMenu = () => {
   const selectedKey = location.pathname.substring(1);
 
   return (
-    <Menu className="!bg-primary"
-          mode="inline"
-          items={items}
-          defaultSelectedKeys={[selectedKey]}
+    <Menu
+      className="!bg-primary"
+      mode="inline"
+      items={items}
+      defaultSelectedKeys={[selectedKey]}
     />
   )
 }
