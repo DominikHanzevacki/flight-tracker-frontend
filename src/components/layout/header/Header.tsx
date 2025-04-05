@@ -1,6 +1,6 @@
 import {Button, Layout} from 'antd';
 import {MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
-import type {ICollapsedProps} from "@/interfaces/sidebar/interface";
+import type {ICollapsedProps} from "@/interfaces/layout/sidebar/interface";
 
 const {Header,} = Layout;
 

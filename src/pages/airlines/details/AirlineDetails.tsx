@@ -1,4 +1,4 @@
-import {Button, Card, Col, Row, Spin} from "antd";
+import {Button, Card, Flex, Spin} from "antd";
 import {useNavigate, useParams} from "react-router-dom";
 import {useGetAirlineByIdQuery} from "@services/api/airlines/airlinesSlice";
 import {NotFound} from "@pages/not-found/NotFound";
@@ -23,16 +23,16 @@ export const AirlineDetails = () => {
       <h2 className="text-2xl font-bold mb-4">{airline.name}</h2>
       <Card>
         <h3 className="text-xl font-semibold mb-4">Details</h3>
-        <Row gutter={[16, 16]}>
-          <Col span="6">
+        <Flex gap={32} wrap="wrap">
+          <Flex vertical>
             <label className="font-semibold mr-2">Country:</label>
             <span>{airline.country.name}</span>
-          </Col>
-          <Col span="6">
+          </Flex>
+          <Flex vertical>
             <label className="font-semibold mr-2">Country Code:</label>
             <span>{airline.country.code}</span>
-          </Col>
-        </Row>
+          </Flex>
+        </Flex>
       </Card>
     </Card>
   );
