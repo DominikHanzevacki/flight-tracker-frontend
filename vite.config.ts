@@ -25,7 +25,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'https://flight-tracker-be-production.up.railway.app:8080',
         changeOrigin: true,
       }
     }
