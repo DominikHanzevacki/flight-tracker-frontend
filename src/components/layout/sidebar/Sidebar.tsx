@@ -1,7 +1,7 @@
 import {Layout} from "antd";
 import {AppLogo} from "@components/logo/AppLogo";
 import {AppMenu} from "@components/layout/sidebar/menu/Menu";
-import {type ICollapsedProps} from "@/interfaces/sidebar/interface";
+import {type ICollapsedProps} from "@/interfaces/layout/sidebar/interface";
 
 const {Sider} = Layout;
 
