@@ -4,6 +4,8 @@ import {Dashboard} from "@pages/dashboard/Dashboard";
 import {Airlines} from "@pages/airlines/Airlines";
 import {AirlineDetails} from "@pages/airlines/details/AirlineDetails";
 import App from "../../App";
+import {Airports} from "@pages/airports/Airports";
+import {AirportDetails} from "@pages/airports/details/AirportDetails";
 
 export const routes = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ export const routes = createBrowserRouter([
     {
       path: 'airlines/:id',
       element: <AirlineDetails/>
+    },
+    {
+      path: 'airports',
+      element: <Airports/>
+    },
+    {
+      path: 'airports/:id',
+      element: <AirportDetails/>
     }
     ]
   },

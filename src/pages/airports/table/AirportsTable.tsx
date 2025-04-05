@@ -1,14 +1,15 @@
-import {useGetAirlinesQuery} from "@services/api/airlines/airlinesSlice";
+import {useGetAirportsQuery} from "@services/api/airports/airportsSlice";
 import {Flex, Spin, Table} from "antd";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
-import type {IAirline, IAirlineTableProps} from "@/interfaces/airlines/interface";
+import type {IAirport, IAirportTableProps} from "@/interfaces/airports/interface";
 import type {ColumnGroupType, ColumnsType} from "antd/es/table";
 import {useNavigate} from "react-router-dom";
+import type {IAirline} from "@/interfaces/airlines/interface";
 
-export const AirlinesTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAirlineTableProps) => {
-  const {data: airlines, error, isLoading} = useGetAirlinesQuery();
+export const AirportsTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAirportTableProps) => {
+  const {data: airports, error, isLoading} = useGetAirportsQuery();
   const navigate = useNavigate();
-  const columns: ColumnsType<IAirline> = [
+  const columns: ColumnsType<IAirport> = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -18,18 +19,37 @@ export const AirlinesTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAir
       title: 'Country name',
       dataIndex: ['country', 'name'],
       key: 'countryName',
-      responsive: ['sm'],
+      responsive: ['md'],
     },
     {
       title: 'Country code',
       dataIndex: ['country', 'code'],
       key: 'countryCode',
-      responsive: ['md'],
+      responsive: ['lg'],
+    },
+    {
+      title: 'Latitude',
+      dataIndex: ['position', 'latitude'],
+      key: 'latitude',
+      responsive: ['lg'],
+    },
+    {
+      title: 'Longitude',
+      dataIndex: ['position', 'longitude'],
+      key: 'longitude',
+      responsive: ['lg'],
+    },
+    {
+      title: 'Airlines',
+      dataIndex: 'airlines',
+      key: 'airlines',
+      render: (airlines) => airlines.map((airline: IAirline) => airline.name).join(', '),
+      responsive: ['sm'],
     },
     {
       title: 'Actions',
       key: 'actions',
-      render: (_: ColumnGroupType<IAirline>, record: IAirline) => (
+      render: (_: ColumnGroupType<IAirport>, record: IAirport) => (
         <Flex gap={16} justify="start" align="center">
           <EditOutlined className="!text-blue-dark hover:!text-blue-light"
             onClick={(e) => {
@@ -37,7 +57,8 @@ export const AirlinesTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAir
               handleEditModalOpen({
                 ...record,
                 country_id: record.country.id,
-              })
+                airlines: record.airlines.map(airline => airline.id),
+              });
             }}/>
           <DeleteOutlined className="!text-danger-dark hover:!text-danger-light"
             onClick={(e) => {
@@ -45,7 +66,8 @@ export const AirlinesTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAir
               handleDeleteModalOpen({
                 ...record,
                 country_id: record.country.id,
-              })
+                airlines: record.airlines.map(airline => airline.id),
+              });
             }}/>
         </Flex>
       ),
@@ -58,15 +80,15 @@ export const AirlinesTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAir
   ];
 
   if (isLoading) return <Spin className="w-full text-center" size="large"/>;
-  if (error) return <div>Error loading airlines</div>;
+  if (error) return <div>Error loading airports</div>;
   return (
     <Table
       rowKey="id"
-      dataSource={airlines}
+      dataSource={airports}
       columns={columns}
       onRow={(record) => ({
         className: 'cursor-pointer',
-        onClick: () => navigate(`/airlines/${record.id}`)
+        onClick: () => navigate(`/airports/${record.id}`)
       })}/>
-  )
-}
+  );
+};

@@ -34,8 +34,7 @@ export const AppModal = <T extends { id: number }, CreatePayload, EditPayload>(
         <span>{deleteMessage}</span>
       ) : (
         <Form name="AppModal"
-          labelCol={{span: 6}}
-          wrapperCol={{span: 18}}
+          layout="vertical"
           form={form}
           onFinish={onFormSubmit}>
           {children}

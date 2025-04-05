@@ -1,6 +1,6 @@
 import type {MenuProps} from "antd";
 import {Link} from "react-router-dom";
-import {CloudOutlined, DashboardOutlined} from "@ant-design/icons";
+import {CloudOutlined, DashboardOutlined, FlagOutlined} from "@ant-design/icons";
 
 export const items: MenuProps['items'] = [
   {
@@ -12,5 +12,10 @@ export const items: MenuProps['items'] = [
     key: 'airlines',
     label: <Link to="/airlines">Airlines</Link>,
     icon: <CloudOutlined/>
+  },
+  {
+    key: 'airports',
+    label: <Link to="/airports">Airports</Link>,
+    icon: <FlagOutlined/>
   },
 ]

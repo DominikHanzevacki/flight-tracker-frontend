@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import type {IAirlineCreatePayload, IAirlineEditPayload, IAirlines} from "@/interfaces/airlines/interface";
+import type {IAirline, IAirlineCreatePayload, IAirlineEditPayload} from "@/interfaces/airlines/interface";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export const airlinesSlice = createApi({
@@ -7,14 +7,14 @@ export const airlinesSlice = createApi({
   baseQuery: fetchBaseQuery({baseUrl: backendUrl}),
   tagTypes: ['Airlines'],
   endpoints: (builder) => ({
-    getAirlines: builder.query<IAirlines[], void>({
+    getAirlines: builder.query<IAirline[], void>({
       query: () => 'airlines',
       providesTags: ['Airlines'],
     }),
-    getAirlineById: builder.query<IAirlines, number>({
+    getAirlineById: builder.query<IAirline, number>({
       query: (id) => `airlines/${id}`,
     }),
-    createAirline: builder.mutation<IAirlines, IAirlineCreatePayload>({
+    createAirline: builder.mutation<IAirline, IAirlineCreatePayload>({
       query: (body) => ({
         url: 'airlines',
         method: 'POST',
@@ -22,7 +22,7 @@ export const airlinesSlice = createApi({
       }),
       invalidatesTags: ['Airlines'],
     }),
-    editAirline: builder.mutation<IAirlines, IAirlineEditPayload>({
+    editAirline: builder.mutation<IAirline, IAirlineEditPayload>({
       query: ({id, body}) => ({
         url: `airlines/${id}`,
         method: 'PUT',

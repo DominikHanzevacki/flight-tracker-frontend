@@ -36,11 +36,11 @@ export const Airlines = () => {
         deleteMessage="Are you sure you want to delete this airline?">
         {(modal.type === ModalType.Create || modal.type === ModalType.Edit) && (
           <div className="pt-3">
-            <Item className="w-full" label="Name" name="name"
+            <Item label="Name" name="name"
               rules={[{required: true, message: 'Please input airline name!'}]}>
               <Input/>
             </Item>
-            <Item className="w-full" label="Country" name="country_id"
+            <Item label="Country" name="country_id"
               rules={[{required: true, message: 'Please select a country!'}]}>
               <Select options={countries?.map(country => ({
                 label: country.name,

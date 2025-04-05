@@ -1,14 +1,12 @@
 import type {ICountry} from "@/interfaces/countries/interface";
 
-export interface IAirlines {
+export interface IAirline {
   id: number;
   name: string;
   country: ICountry;
 }
 
-export interface IAirlineCreatePayload {
-  id: number;
-  name: string;
+export interface IAirlineCreatePayload extends Omit<IAirline, 'country'> {
   country_id: number;
 }
 
@@ -17,7 +15,7 @@ export interface IAirlineEditPayload {
   body: IAirlineCreatePayload;
 }
 
-export interface IAirlinesTableProps {
+export interface IAirlineTableProps {
   handleEditModalOpen: (row: IAirlineCreatePayload) => void;
   handleDeleteModalOpen: (row: IAirlineCreatePayload) => void;
 }
