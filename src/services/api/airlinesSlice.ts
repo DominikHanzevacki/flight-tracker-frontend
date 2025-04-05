@@ -10,6 +10,9 @@ export const airlinesSlice = createApi({
       query: () => 'airlines',
       providesTags: ['Airlines'],
     }),
+    getAirlineById: builder.query<IAirlines, number>({
+      query: (id) => `airlines/${id}`,
+    }),
     createAirline: builder.mutation<IAirlines, IAirlineCreatePayload>({
       query: (body) => ({
         url: 'airlines',
@@ -38,6 +41,7 @@ export const airlinesSlice = createApi({
 
 export const {
   useGetAirlinesQuery,
+  useGetAirlineByIdQuery,
   useCreateAirlineMutation,
   useEditAirlineMutation,
   useDeleteAirlineMutation
