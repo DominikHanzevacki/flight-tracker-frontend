@@ -1,14 +1,20 @@
 import {Button, Result} from "antd";
 import {useNavigate} from "react-router-dom";
+import type {ResultStatusType} from "antd/es/result";
 
-export const ErrorPage = () => {
+interface IErrorPageProps {
+  error: string;
+  status: ResultStatusType;
+}
+
+export const ErrorPage = ({error, status}: IErrorPageProps) => {
   const navigate = useNavigate();
   return (
     <Result
       className="h-full flex items-center justify-center flex-col"
-      status="404"
-      title="404"
-      subTitle="Sorry, the page you visited does not exist."
+      status={status}
+      title="Sorry, something went wrong."
+      subTitle={error}
       extra={
         <Button type="primary" onClick={() => navigate('/')}>
           Back Home

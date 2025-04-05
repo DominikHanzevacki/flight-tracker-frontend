@@ -4,6 +4,8 @@ import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import type {IAirline, IAirlineTableProps} from "@/interfaces/airlines/interface";
 import type {ColumnGroupType, ColumnsType} from "antd/es/table";
 import {useNavigate} from "react-router-dom";
+import type {ResultStatusType} from "antd/es/result";
+import {ErrorPage} from "@pages/error-page/ErrorPage";
 
 export const AirlinesTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAirlineTableProps) => {
   const {data: airlines, error, isLoading} = useGetAirlinesQuery();
@@ -58,7 +60,10 @@ export const AirlinesTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAir
   ];
 
   if (isLoading) return <Spin className="w-full text-center" size="large"/>;
-  if (error) return <div>Error loading airlines</div>;
+  if (error) {
+    const errorMessage = error as { originalStatus: ResultStatusType; error: string };
+    return <ErrorPage error={errorMessage.error} status={errorMessage.originalStatus}/>
+  }
   return (
     <Table
       rowKey="id"

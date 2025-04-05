@@ -36,22 +36,22 @@ export const Airports = () => {
       </Card>
       <AppModal name="airport" modal={modal} onCreate={createAirport} onEdit={editAirport} onDelete={deleteAirport}
         deleteMessage="Are you sure you want to delete this airport?">
-        {(modal.type === ModalType.Create || modal.type === ModalType.Edit) && (
+        {(modal?.type === ModalType.Create || modal?.type === ModalType.Edit) && (
           <div className="pt-3">
             <Item label="Name" name="name"
               rules={[{required: true, message: 'Please input airport name!'}]}>
-              <Input/>
+              <Input placeholder="Airport name" maxLength={50}/>
             </Item>
             <Item label="Country" name="country_id"
               rules={[{required: true, message: 'Please select a country!'}]}>
-              <Select options={countries?.map(country => ({
+              <Select placeholder="Select country" options={countries?.map(country => ({
                 label: country.name,
                 value: country.id
               })) ?? []}/>
             </Item>
             <Item label="Airlines" name="airlines"
               rules={[{required: true, message: 'Please select airlines!'}]}>
-              <Select mode="multiple"
+              <Select mode="multiple" placeholder="Select airlines"
                 options={airlines?.map(airline => ({label: airline.name, value: airline.id})) ?? []}/>
             </Item>
             <Item label="Position">
