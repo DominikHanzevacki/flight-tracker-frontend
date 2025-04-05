@@ -1,13 +1,13 @@
 .anticon-yuque > svg {
-  fill: var(--color-fill);
+  fill: var(--color-blue-dark);
 }
 
 .ant-menu-item {
-  color: var(--color-fill) !important;
+  color: var(--color-blue-dark) !important;
 
   &.ant-menu-item-selected {
-    background-color: var(--color-text) !important;
-    color: var(--color-fill) !important;
+    background-color: white !important;
+    color: var(--color-blue-dark) !important;
   }
 }
 

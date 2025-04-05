@@ -8,7 +8,7 @@ export const AppHeader = ({collapsed, setCollapsed}: ICollapsedProps) => {
   return (
     <Header className="!bg-primary">
       <Button
-        className="!text-fill w-16 h-16 rounded-lg hover:!text-secondary"
+        className="!text-blue-dark w-16 h-16 rounded-lg hover:!text-blue-light"
         type="text"
         icon={collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
         onClick={() => setCollapsed(!collapsed)}
