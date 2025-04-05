@@ -1,4 +1,4 @@
-import {useGetAirlinesQuery} from "@services/api/airlinesSlice";
+import {useGetAirlinesQuery} from "@services/api/airlines/airlinesSlice";
 import {Flex, Spin, Table} from "antd";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import type {IAirlines, IAirlinesTableProps} from "@/interfaces/airlines/interface";

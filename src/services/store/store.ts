@@ -1,5 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {airlinesSlice} from '../api/airlinesSlice';
+import {airlinesSlice} from '../api/airlines/airlinesSlice';
 import {countriesSlice} from "@services/api/country/countriesSlice";
 
 export const store = configureStore({

@@ -1,6 +1,6 @@
 import {Button, Card, Col, Row, Spin} from "antd";
 import {useNavigate, useParams} from "react-router-dom";
-import {useGetAirlineByIdQuery} from "@services/api/airlinesSlice";
+import {useGetAirlineByIdQuery} from "@services/api/airlines/airlinesSlice";
 import {NotFound} from "@pages/not-found/NotFound";
 
 export const AirlineDetails = () => {

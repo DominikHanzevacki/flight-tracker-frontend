@@ -1,9 +1,10 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import type {IAirlineCreatePayload, IAirlineEditPayload, IAirlines} from "@/interfaces/airlines/interface";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export const airlinesSlice = createApi({
   reducerPath: 'airlinesSlice',
-  baseQuery: fetchBaseQuery({baseUrl: '/api'}),
+  baseQuery: fetchBaseQuery({baseUrl: backendUrl}),
   tagTypes: ['Airlines'],
   endpoints: (builder) => ({
     getAirlines: builder.query<IAirlines[], void>({
