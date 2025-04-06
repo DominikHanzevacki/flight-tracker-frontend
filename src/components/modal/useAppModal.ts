@@ -1,7 +1,8 @@
-import {ModalType} from "@/interfaces/modal/enums/enums";
+import {ModalType} from "@interfaces/modal/enums/enums";
 import {useEffect} from "react";
-import type {IModalProps} from "@/interfaces/modal/interface";
+import type {IModalProps} from "@interfaces/modal/interface";
 import {Form} from "antd";
+import {useTranslation} from "react-i18next";
 
 export const useAppModal = <T extends { id: number }, CreatePayload, EditPayload>(
   {
@@ -12,6 +13,7 @@ export const useAppModal = <T extends { id: number }, CreatePayload, EditPayload
     onDelete,
     deleteMessage = ''
   }: IModalProps<T, CreatePayload, EditPayload>) => {
+  const {t} = useTranslation();
   const {selectedRow, type, isModalOpen, handleModalClose} = modal;
   const [form] = Form.useForm();
 
@@ -24,11 +26,11 @@ export const useAppModal = <T extends { id: number }, CreatePayload, EditPayload
   const handleModalTitle = (): string => {
     switch (type) {
     case ModalType.Create:
-      return `Create ${name}`;
+      return t(name + '.create');
     case ModalType.Edit:
-      return `Edit ${name}`;
+      return t(name + '.edit');
     case ModalType.Delete:
-      return `Delete ${name}`;
+      return t(name + '.delete');
     default:
       return '';
     }
@@ -77,13 +79,14 @@ export const useAppModal = <T extends { id: number }, CreatePayload, EditPayload
   }
 
   return {
+    t,
     form,
+    isModalOpen,
+    type,
     handleModalTitle,
     onModalSubmit,
     onFormSubmit,
     onClose,
-    isModalOpen,
-    type,
     deleteMessage
   };
 }

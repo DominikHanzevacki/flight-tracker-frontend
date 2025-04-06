@@ -1,8 +1,8 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import type {IAirline, IAirlineCreatePayload, IAirlineEditPayload} from "@/interfaces/airlines/interface";
+import type {IAirline, IAirlineCreatePayload, IAirlineEditPayload} from "@interfaces/airlines/interface";
+import {AIRLINES_TAG} from "@constants/tags/tags";
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
-const AIRLINES_TAG = import.meta.env.VITE_AIRLINES_TAG;
 export const airlinesSlice = createApi({
   reducerPath: 'airlinesSlice',
   baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),

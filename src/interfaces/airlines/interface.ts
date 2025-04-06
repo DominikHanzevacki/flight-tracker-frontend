@@ -1,4 +1,4 @@
-import type {ICountry} from "@/interfaces/countries/interface";
+import type {ICountry} from "@interfaces/countries/interface";
 
 export interface IAirline {
   id: number;

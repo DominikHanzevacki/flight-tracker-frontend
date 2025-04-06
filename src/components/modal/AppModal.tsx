@@ -1,6 +1,6 @@
 import {Form, Modal} from "antd";
-import type {IModalProps} from "@/interfaces/modal/interface";
-import {ModalType} from "@/interfaces/modal/enums/enums";
+import type {IModalProps} from "@interfaces/modal/interface";
+import {ModalType} from "@interfaces/modal/enums/enums";
 import {useAppModal} from "./useAppModal";
 
 export const AppModal = <T extends { id: number }, CreatePayload, EditPayload>(
@@ -14,6 +14,7 @@ export const AppModal = <T extends { id: number }, CreatePayload, EditPayload>(
     children
   }: IModalProps<T, CreatePayload, EditPayload>) => {
   const {
+    t,
     form,
     handleModalTitle,
     onModalSubmit,
@@ -29,6 +30,10 @@ export const AppModal = <T extends { id: number }, CreatePayload, EditPayload>(
       open={isModalOpen}
       onCancel={onClose}
       onOk={onModalSubmit}
+      okText={type === ModalType.Delete ? t('general.delete') : t('general.submit')}
+      cancelText={t('general.cancel')}
+      okButtonProps={{className: "!bg-blue-light hover:!bg-primary"}}
+      cancelButtonProps={{className: "hover:!border-blue-light hover:!text-blue-light"}}
     >
       {type === ModalType.Delete ? (
         <span>{deleteMessage}</span>
