@@ -1,5 +1,5 @@
-import {AppHeader} from "@components/layout/header/Header";
-import {AppSidebar} from "@components/layout/sidebar/Sidebar";
+import {AppHeader} from "@components/layout/header/AppHeader";
+import {AppSidebar} from "@components/layout/sidebar/AppSidebar";
 import {Layout} from "antd";
 import {AppContent} from "@components/layout/content/Content";
 import {useState} from "react";

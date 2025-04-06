@@ -1,0 +1,76 @@
+{
+  "airlines": {
+    "title": "Airlines",
+    "create": "Add new airline",
+    "edit": "Update airline",
+    "delete": "Delete airline",
+    "delete-message": "Are you sure you want to delete this airline?",
+    "table": {
+      "name": "Name",
+      "country-name": "Country Name",
+      "country-code": "Country Code"
+    },
+    "form": {
+      "name": "Name",
+      "country": "Country"
+    },
+    "placeholder": {
+      "name": "Enter airline name",
+      "country": "Select country"
+    },
+    "validations": {
+      "name": "Name is required",
+      "country": "Country is required"
+    }
+  },
+  "airports": {
+    "title": "Airports",
+    "create": "Add new airport",
+    "edit": "Update airport",
+    "delete": "Delete airport",
+    "delete-message": "Are you sure you want to delete this airport?",
+    "table": {
+      "name": "Name",
+      "country-name": "Country Name",
+      "country-code": "Country Code",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "airlines": "Airlines"
+    },
+    "form": {
+      "name": "Name",
+      "country": "Country",
+      "airlines": "Airlines",
+      "position": "Position"
+    },
+    "placeholder": {
+      "name": "Enter airport name",
+      "country": "Select country",
+      "airlines": "Select airline",
+      "latitude": "Enter latitude",
+      "longitude": "Enter longitude"
+    },
+    "validations": {
+      "name": "Name is required",
+      "country": "Country is required",
+      "airlines": "Airlines are required",
+      "latitude": "Latitude is required",
+      "longitude": "Longitude is required"
+    },
+    "live-location-title": "Live Airport Locations"
+  },
+  "general": {
+    "croatian": "Croatian",
+    "english": "English",
+    "home": "Home",
+    "actions": "Actions",
+    "details": "Details",
+    "go-back": "Go Back",
+    "submit": "Submit",
+    "close": "Close",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "errors": {
+  }
+}

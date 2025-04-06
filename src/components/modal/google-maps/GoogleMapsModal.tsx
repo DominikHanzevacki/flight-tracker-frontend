@@ -1,10 +1,7 @@
-import {Modal} from "antd";
-import type {ReactNode} from "react";
-import type {IModal} from "@/interfaces/modal/interface";
+import {Button, Modal} from "antd";
+import type {GenericModalProps} from "@interfaces/google-maps/interface";
+import {useTranslation} from "react-i18next";
 
-interface GenericModalProps<T extends { id: number }> extends IModal<T> {
-  children?: ReactNode;
-}
 
 export const GoogleMapsModal = <T extends { id: number, name: string }, >({
   isModalOpen,
@@ -12,12 +9,17 @@ export const GoogleMapsModal = <T extends { id: number, name: string }, >({
   selectedRow,
   children
 }: GenericModalProps<T>) => {
+  const {t} = useTranslation();
   return (
     <Modal
       title={selectedRow?.name}
       open={isModalOpen}
       onCancel={handleModalClose}
-      onOk={handleModalClose}
+      footer={[
+        <Button key="close" type="primary" onClick={handleModalClose} className="!bg-blue-light hover:!bg-primary">
+          {t('general.close')}
+        </Button>
+      ]}
     >
       <div className="pt-3">
         {children}

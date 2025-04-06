@@ -1,5 +1,5 @@
 import type {ReactNode} from "react";
-import {type ModalType} from "@/interfaces/modal/enums/enums";
+import {type ModalType} from "@interfaces/modal/enums/enums";
 
 export interface IModal<T extends { id: number }> {
   isModalOpen: boolean;

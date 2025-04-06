@@ -4,8 +4,11 @@ import {useGetAirlineByIdQuery} from "@services/api/airlines/airlinesSlice";
 import {NotFound} from "@pages/not-found/NotFound";
 import type {ResultStatusType} from "antd/es/result";
 import {ErrorPage} from "@pages/error-page/ErrorPage";
+import {AppBreadcrumbs} from "@components/breadcrumbs/AppBreadcrumbs";
+import {useTranslation} from "react-i18next";
 
 export const AirlineDetails = () => {
+  const {t} = useTranslation();
   const {id} = useParams();
   const navigate = useNavigate();
   const {data: airline, error, isLoading} = useGetAirlineByIdQuery(id ? parseInt(id) : 0, {skip: !id});
@@ -25,18 +28,19 @@ export const AirlineDetails = () => {
 
   return (
     <Card className="border rounded-lg shadow-sm">
-      <Button className="mb-4 !bg-blue-light  hover:!text-primary" type="primary" onClick={() => navigate(-1)}>Go
-        Back</Button>
-      <h2 className="text-2xl font-bold mb-4">{airline.name}</h2>
+      <Button className="mb-4 !bg-blue-light  hover:!text-primary" type="primary"
+        onClick={() => navigate(-1)}>{t('general.go-back')}</Button>
+      <AppBreadcrumbs selectedRow={airline}/>
+      <h2 className="text-2xl font-bold my-4">{airline.name}</h2>
       <Card>
-        <h3 className="text-xl font-semibold mb-4">Details</h3>
+        <h3 className="text-xl font-semibold mb-4">{t('general.details')}</h3>
         <Flex gap={32} wrap="wrap">
           <Flex vertical>
-            <label className="font-semibold mr-2">Country:</label>
+            <label className="font-semibold mr-2">{t('airlines.table.country-name') + ':'}</label>
             <span>{airline.country.name}</span>
           </Flex>
           <Flex vertical>
-            <label className="font-semibold mr-2">Country Code:</label>
+            <label className="font-semibold mr-2">{t('airlines.table.country-code') + ':'}</label>
             <span>{airline.country.code}</span>
           </Flex>
         </Flex>

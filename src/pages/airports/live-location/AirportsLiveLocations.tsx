@@ -1,22 +1,21 @@
 import {GoogleMap, LoadScriptNext, Marker} from "@react-google-maps/api";
-import {useGetAirportsQuery} from "@services/api/airports/airportsSlice";
 import {Flex, Spin} from "antd";
-import {useState} from "react";
-import type {IAirport} from "@/interfaces/airports/interface";
 import {GoogleMapsModal} from "@components/modal/google-maps/GoogleMapsModal";
 import {ErrorPage} from "@pages/error-page/ErrorPage";
 import type {ResultStatusType} from "antd/es/result";
+import {useAirportsLiveLocations} from "@pages/airports/live-location/useAirportsLiveLocations";
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 export const AirportsLiveLocations = () => {
-  const [selectedAirport, setSelectedAirport] = useState<IAirport | null>(null);
-  const {data: airports, error, isLoading} = useGetAirportsQuery();
-  const handleModalClose = () => {
-    setSelectedAirport(null);
-  };
-  const handleMarkerClick = (airport: IAirport) => {
-    setSelectedAirport(airport);
-  };
+  const {
+    t,
+    airports,
+    error,
+    isLoading,
+    selectedAirport,
+    handleModalClose,
+    handleMarkerClick,
+  } = useAirportsLiveLocations();
   if (isLoading) return <Spin className="w-full text-center" size="large"/>;
   if (error) {
     const errorMessage = error as { originalStatus: ResultStatusType; error: string };
@@ -60,20 +59,20 @@ export const AirportsLiveLocations = () => {
           <Flex gap={16} wrap="wrap">
             <Flex className="w-full" gap={32} wrap="wrap" justify="space-between">
               <Flex vertical>
-                <label className="font-semibold mr-2">Country:</label>
+                <label className="font-semibold mr-2">{t('airports.table.country-name') + ':'}</label>
                 <span>{selectedAirport.country.name}</span>
               </Flex>
               <Flex vertical>
-                <label className="font-semibold mr-2">Latitude:</label>
+                <label className="font-semibold mr-2">{t('airports.table.latitude') + ':'}</label>
                 <span>{selectedAirport.position.latitude}</span>
               </Flex>
               <Flex vertical>
-                <label className="font-semibold mr-2">Longitude:</label>
+                <label className="font-semibold mr-2">{t('airports.table.longitude') + ':'}</label>
                 <span>{selectedAirport.position.longitude}</span>
               </Flex>
             </Flex>
             <Flex className="w-full" vertical>
-              <label className="font-semibold mr-2">Airlines:</label>
+              <label className="font-semibold mr-2">{t('airports.table.airlines') + ':'}</label>
               <span>{selectedAirport.airlines.map(airline => airline.name).join(', ')}</span>
             </Flex>
           </Flex>

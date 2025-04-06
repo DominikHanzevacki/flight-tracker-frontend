@@ -1,55 +1,57 @@
 import {useGetAirportsQuery} from "@services/api/airports/airportsSlice";
 import {Flex, Spin, Table} from "antd";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
-import type {IAirport, IAirportTableProps} from "@/interfaces/airports/interface";
+import type {IAirport, IAirportTableProps} from "@interfaces/airports/interface";
 import type {ColumnGroupType, ColumnsType} from "antd/es/table";
 import {useNavigate} from "react-router-dom";
-import type {IAirline} from "@/interfaces/airlines/interface";
+import type {IAirline} from "@interfaces/airlines/interface";
 import type {ResultStatusType} from "antd/es/result";
 import {ErrorPage} from "@pages/error-page/ErrorPage";
+import {useTranslation} from "react-i18next";
 
 export const AirportsTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAirportTableProps) => {
+  const {t} = useTranslation()
   const {data: airports, error, isLoading} = useGetAirportsQuery();
   const navigate = useNavigate();
   const columns: ColumnsType<IAirport> = [
     {
-      title: 'Name',
+      title: t('airports.table.name'),
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'Country name',
+      title: t('airports.table.country-name'),
       dataIndex: ['country', 'name'],
       key: 'countryName',
       responsive: ['md'],
     },
     {
-      title: 'Country code',
+      title: t('airports.table.country-code'),
       dataIndex: ['country', 'code'],
       key: 'countryCode',
       responsive: ['lg'],
     },
     {
-      title: 'Latitude',
+      title: t('airports.table.latitude'),
       dataIndex: ['position', 'latitude'],
       key: 'latitude',
       responsive: ['lg'],
     },
     {
-      title: 'Longitude',
+      title: t('airports.table.longitude'),
       dataIndex: ['position', 'longitude'],
       key: 'longitude',
       responsive: ['lg'],
     },
     {
-      title: 'Airlines',
+      title: t('airports.table.airlines'),
       dataIndex: 'airlines',
       key: 'airlines',
       render: (airlines) => airlines.map((airline: IAirline) => airline.name).join(', '),
       responsive: ['sm'],
     },
     {
-      title: 'Actions',
+      title: t('general.actions'),
       key: 'actions',
       render: (_: ColumnGroupType<IAirport>, record: IAirport) => (
         <Flex gap={16} justify="start" align="center">

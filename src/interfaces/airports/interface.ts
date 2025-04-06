@@ -1,6 +1,6 @@
 import type {ICountry} from "../countries/interface";
-import type {IPosition} from "@/interfaces/google-maps/position/interface";
-import type {IAirline} from "@/interfaces/airlines/interface";
+import type {IPosition} from "@interfaces/google-maps/position/interface";
+import type {IAirline} from "@interfaces/airlines/interface";
 
 export interface IAirport {
   id: number;

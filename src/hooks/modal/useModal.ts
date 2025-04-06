@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import {ModalType} from "@/interfaces/modal/enums/enums";
-import type {IModal} from "@/interfaces/modal/interface";
+import {ModalType} from "@interfaces/modal/enums/enums";
+import type {IModal} from "@interfaces/modal/interface";
 
 export const useModal = <T extends { id: number }>(initialState = false): IModal<T> => {
   const [isModalOpen, setIsModalOpen] = useState(initialState);

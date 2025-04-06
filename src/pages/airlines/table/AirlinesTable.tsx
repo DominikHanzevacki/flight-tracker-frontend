@@ -1,35 +1,37 @@
 import {useGetAirlinesQuery} from "@services/api/airlines/airlinesSlice";
 import {Flex, Spin, Table} from "antd";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
-import type {IAirline, IAirlineTableProps} from "@/interfaces/airlines/interface";
+import type {IAirline, IAirlineTableProps} from "@interfaces/airlines/interface";
 import type {ColumnGroupType, ColumnsType} from "antd/es/table";
 import {useNavigate} from "react-router-dom";
 import type {ResultStatusType} from "antd/es/result";
 import {ErrorPage} from "@pages/error-page/ErrorPage";
+import {useTranslation} from "react-i18next";
 
 export const AirlinesTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAirlineTableProps) => {
+  const {t} = useTranslation();
   const {data: airlines, error, isLoading} = useGetAirlinesQuery();
   const navigate = useNavigate();
   const columns: ColumnsType<IAirline> = [
     {
-      title: 'Name',
+      title: t('airlines.table.name'),
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'Country name',
+      title: t('airlines.table.country-name'),
       dataIndex: ['country', 'name'],
       key: 'countryName',
       responsive: ['sm'],
     },
     {
-      title: 'Country code',
+      title: t('airlines.table.country-code'),
       dataIndex: ['country', 'code'],
       key: 'countryCode',
       responsive: ['md'],
     },
     {
-      title: 'Actions',
+      title: t('general.actions'),
       key: 'actions',
       render: (_: ColumnGroupType<IAirline>, record: IAirline) => (
         <Flex gap={16} justify="start" align="center">
