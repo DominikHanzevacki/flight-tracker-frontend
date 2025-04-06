@@ -5,12 +5,14 @@ import {
   useDeleteAirportMutation,
   useEditAirportMutation
 } from "@services/api/airports/airportsSlice";
-import {ModalType} from "@/interfaces/modal/enums/enums";
-import type {IAirportCreatePayload} from "@/interfaces/airports/interface";
-import type {IModal} from "@/interfaces/modal/interface";
+import {ModalType} from "@interfaces/modal/enums/enums";
+import type {IAirportCreatePayload} from "@interfaces/airports/interface";
+import type {IModal} from "@interfaces/modal/interface";
 import {useGetAirlinesQuery} from "@services/api/airlines/airlinesSlice";
+import {useTranslation} from "react-i18next";
 
 export const useAirports = () => {
+  const {t} = useTranslation();
   const modal: IModal<IAirportCreatePayload> = useModal();
   const {data: countries, isLoading: countriesLoading} = useGetCountriesQuery();
   const {data: airlines, isLoading: airlinesLoading} = useGetAirlinesQuery();
@@ -22,6 +24,7 @@ export const useAirports = () => {
   const handleDeleteModalOpen = (row: IAirportCreatePayload) => modal.handleModalOpen(ModalType.Delete, row);
 
   return {
+    t,
     modal,
     countries,
     countriesLoading,

@@ -2,12 +2,14 @@ import {Card, Flex, Form, Input, Select, Spin} from "antd";
 import {AirlinesTable} from "@pages/airlines/table/AirlinesTable";
 import {AirlinesHeader} from "@pages/airlines/header/AirlinesHeader";
 import {AppModal} from "@components/modal/AppModal";
-import {ModalType} from "@/interfaces/modal/enums/enums";
+import {ModalType} from "@interfaces/modal/enums/enums";
 import {useAirlines} from "@pages/airlines/useAirlines";
+import {AppBreadcrumbs} from "@components/breadcrumbs/AppBreadcrumbs";
 
 const {Item} = Form;
 export const Airlines = () => {
   const {
+    t,
     modal,
     countries,
     countriesLoading,
@@ -27,22 +29,23 @@ export const Airlines = () => {
     <>
       <Card className="border rounded-lg shadow-sm">
         <Flex vertical gap={16}>
+          <AppBreadcrumbs/>
           <AirlinesHeader handleCreateModalOpen={handleCreateModalOpen}/>
           <AirlinesTable handleEditModalOpen={handleEditModalOpen}
             handleDeleteModalOpen={handleDeleteModalOpen}/>
         </Flex>
       </Card>
-      <AppModal name="airline" modal={modal} onCreate={createAirline} onEdit={editAirline} onDelete={deleteAirline}
-        deleteMessage="Are you sure you want to delete this airline?">
+      <AppModal name="airlines" modal={modal} onCreate={createAirline} onEdit={editAirline} onDelete={deleteAirline}
+        deleteMessage={t('airlines.delete-message')}>
         {(modal?.type === ModalType.Create || modal?.type === ModalType.Edit) && (
           <div className="pt-3">
-            <Item label="Name" name="name"
-              rules={[{required: true, message: 'Please input airline name!'}]}>
-              <Input placeholder="Airline name" maxLength={50}/>
+            <Item label={t('airlines.form.name')} name="name"
+              rules={[{required: true, message: t('airlines.validations.name')}]}>
+              <Input placeholder={t('airlines.placeholder.name')} maxLength={50} allowClear/>
             </Item>
-            <Item label="Country" name="country_id"
-              rules={[{required: true, message: 'Please select a country!'}]}>
-              <Select placeholder="Select country" options={countries?.map(country => ({
+            <Item label={t('airlines.form.country')} name="country_id"
+              rules={[{required: true, message: t('airlines.validations.country')}]}>
+              <Select placeholder={t('airlines.placeholder.country')} allowClear options={countries?.map(country => ({
                 label: country.name,
                 value: country.id
               })) ?? []}/>

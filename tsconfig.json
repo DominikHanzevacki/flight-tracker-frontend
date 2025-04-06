@@ -27,19 +27,19 @@
         "src/*"
       ],
       "@assets/*": [
-        "assets/*"
+        "src/assets/*"
       ],
       "@components/*": [
         "src/components/*"
       ],
       "@constants/*": [
-        "constants/*"
+        "src/constants/*"
       ],
       "@hooks/*": [
         "src/hooks/*"
       ],
       "@interfaces/*": [
-        "interfaces/*"
+        "src/interfaces/*"
       ],
       "@pages/*": [
         "src/pages/*"
@@ -47,8 +47,8 @@
       "@services/*": [
         "src/services/*"
       ],
-      "@utils/*": [
-        "src/utils/*"
+      "@helpers/*": [
+        "src/helpers/*"
       ]
     }
   },

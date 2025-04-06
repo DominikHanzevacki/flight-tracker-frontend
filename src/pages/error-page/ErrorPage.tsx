@@ -1,11 +1,6 @@
 import {Button, Result} from "antd";
 import {useNavigate} from "react-router-dom";
-import type {ResultStatusType} from "antd/es/result";
-
-interface IErrorPageProps {
-  error: string;
-  status: ResultStatusType;
-}
+import type {IErrorPageProps} from "@interfaces/error-page/interface";
 
 export const ErrorPage = ({error, status}: IErrorPageProps) => {
   const navigate = useNavigate();

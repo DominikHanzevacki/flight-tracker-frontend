@@ -14,10 +14,10 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/pages'),
       '@services': path.resolve(__dirname, './src/services'),
       '@styles': path.resolve(__dirname, './src/styles'),
-      '@utils': path.resolve(__dirname, './src/utils'),
-      '@assets': path.resolve(__dirname, './assets'),
-      '@constants': path.resolve(__dirname, './constants'),
-      '@interfaces': path.resolve(__dirname, './interfaces')
+      '@helpers': path.resolve(__dirname, './src/helpers'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@constants': path.resolve(__dirname, './src/constants'),
+      '@interfaces': path.resolve(__dirname, './src/interfaces'),
     }
   },
   server: {

@@ -1,0 +1,76 @@
+{
+  "airlines": {
+    "title": "Zračne kompanije",
+    "create": "Dodaj novu zračnu kompaniju",
+    "edit": "Ažuriraj zračnu kompaniju",
+    "delete": "Obriši zračnu kompaniju",
+    "delete-message": "Da li ste sigurni da želite obrisati ovu zračnu kompaniju?",
+    "table": {
+      "name": "Naziv",
+      "country-name": "Naziv države",
+      "country-code": "Kod države"
+    },
+    "form": {
+      "name": "Naziv",
+      "country": "Država"
+    },
+    "placeholder": {
+      "name": "Unesite naziv zračne kompanije",
+      "country": "Odaberite državu"
+    },
+    "validations": {
+      "name": "Naziv je obavezan",
+      "country": "Država je obavezna"
+    }
+  },
+  "airports": {
+    "title": "Zračne luke",
+    "create": "Dodaj novu zračnu luku",
+    "edit": "Ažuriraj zračnu luku",
+    "delete": "Obriši zračnu luku",
+    "delete-message": "Da li ste sigurni da želite obrisati ovu zračnu luku?",
+    "table": {
+      "name": "Naziv",
+      "country-name": "Naziv države",
+      "country-code": "Kod države",
+      "latitude": "Geografska širina",
+      "longitude": "Geografska dužina",
+      "airlines": "Zračne kompanije"
+    },
+    "form": {
+      "name": "Naziv",
+      "country": "Država",
+      "airlines": "Zračne kompanije",
+      "position": "Pozicija"
+    },
+    "placeholder": {
+      "name": "Unesite naziv zračne luke",
+      "country": "Odaberite državu",
+      "airlines": "Odaberite zračnu kompaniju",
+      "latitude": "Unesite geografsku širinu",
+      "longitude": "Unesite geografsku dužinu"
+    },
+    "validations": {
+      "name": "Naziv je obavezan",
+      "country": "Država je obavezna",
+      "airlines": "Zračne kompanije su obavezne",
+      "latitude": "Geografska širina je obavezna",
+      "longitude": "Geografska dužina je obavezna"
+    },
+    "live-location-title": "Lokacije zranih luka"
+  },
+  "general": {
+    "croatian": "Hrvatski",
+    "english": "Engleski",
+    "home": "Početna stranica",
+    "actions": "Akcije",
+    "details": "Detalji",
+    "go-back": "Vratite se",
+    "submit": "Pošalji",
+    "close": "Zatvori",
+    "cancel": "Odustani",
+    "delete": "Obriši"
+  },
+  "errors": {
+  }
+}
