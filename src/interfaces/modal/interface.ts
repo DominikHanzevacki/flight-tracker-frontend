@@ -3,7 +3,7 @@ import {type ModalType} from "@/interfaces/modal/enums/enums";
 
 export interface IModal<T extends { id: number }> {
   isModalOpen: boolean;
-  type: ModalType;
+  type?: ModalType;
   handleModalOpen: (modalType: ModalType, selectedRow?: T) => void;
   handleModalClose: () => void;
   selectedRow?: T,

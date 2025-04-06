@@ -13,13 +13,8 @@ export const AppSidebar = ({collapsed, setCollapsed}: ICollapsedProps) => {
       trigger={null}
       collapsible
       collapsed={collapsed}
-      onBreakpoint={(isCollapsed) => {
-        if (isCollapsed) {
-          setCollapsed(true);
-        } else {
-          setCollapsed(false);
-        }
-      }}
+      onBreakpoint={(isCollapsed) => isCollapsed ? setCollapsed(true) : setCollapsed(false)
+      }
     >
       <AppLogo/>
       <AppMenu/>

@@ -1,17 +1,18 @@
-import {ErrorPage} from "@pages/error-page/ErrorPage";
 import {createBrowserRouter} from "react-router";
 import {Dashboard} from "@pages/dashboard/Dashboard";
 import {Airlines} from "@pages/airlines/Airlines";
 import {AirlineDetails} from "@pages/airlines/details/AirlineDetails";
 import App from "../../App";
 import {Airports} from "@pages/airports/Airports";
+import {AirportsLiveLocations} from "@pages/airports/live-location/AirportsLiveLocations";
 import {AirportDetails} from "@pages/airports/details/AirportDetails";
+import {NotFound} from "@pages/not-found/NotFound";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
-    errorElement: <ErrorPage/>,
+    errorElement: <NotFound/>,
     children: [{
       path: 'dashboard',
       element: <Dashboard/>
@@ -31,7 +32,12 @@ export const routes = createBrowserRouter([
     {
       path: 'airports/:id',
       element: <AirportDetails/>
-    }
+    },
+    {
+      path: 'airports-live-location',
+      element: <AirportsLiveLocations/>
+
+    },
     ]
   },
 ]);

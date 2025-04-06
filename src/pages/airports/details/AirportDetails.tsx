@@ -2,6 +2,8 @@ import {Button, Card, Flex, Spin} from "antd";
 import {useNavigate, useParams} from "react-router-dom";
 import {useGetAirportByIdQuery} from "@services/api/airports/airportsSlice";
 import {NotFound} from "@pages/not-found/NotFound";
+import type {ResultStatusType} from "antd/es/result";
+import {ErrorPage} from "@pages/error-page/ErrorPage";
 
 export const AirportDetails = () => {
   const {id} = useParams();
@@ -11,9 +13,14 @@ export const AirportDetails = () => {
   if (isLoading) {
     return <Spin className="w-full text-center" size="large"/>
   }
+  
+  if (error) {
+    const errorMessage = error as { originalStatus: ResultStatusType; error: string };
+    return <ErrorPage error={errorMessage.error} status={errorMessage.originalStatus}/>
+  }
 
-  if (error || !airport) {
-    return <NotFound/>;
+  if (!airport) {
+    return <NotFound/>
   }
 
   return (
