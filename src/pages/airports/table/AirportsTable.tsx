@@ -5,6 +5,8 @@ import type {IAirport, IAirportTableProps} from "@/interfaces/airports/interface
 import type {ColumnGroupType, ColumnsType} from "antd/es/table";
 import {useNavigate} from "react-router-dom";
 import type {IAirline} from "@/interfaces/airlines/interface";
+import type {ResultStatusType} from "antd/es/result";
+import {ErrorPage} from "@pages/error-page/ErrorPage";
 
 export const AirportsTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAirportTableProps) => {
   const {data: airports, error, isLoading} = useGetAirportsQuery();
@@ -80,7 +82,10 @@ export const AirportsTable = ({handleEditModalOpen, handleDeleteModalOpen}: IAir
   ];
 
   if (isLoading) return <Spin className="w-full text-center" size="large"/>;
-  if (error) return <div>Error loading airports</div>;
+  if (error) {
+    const errorMessage = error as { originalStatus: ResultStatusType; error: string };
+    return <ErrorPage error={errorMessage.error} status={errorMessage.originalStatus}/>
+  }
   return (
     <Table
       rowKey="id"

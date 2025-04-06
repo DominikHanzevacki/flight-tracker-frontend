@@ -1,15 +1,16 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import type {IAirline, IAirlineCreatePayload, IAirlineEditPayload} from "@/interfaces/airlines/interface";
 
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+const AIRLINES_TAG = import.meta.env.VITE_AIRLINES_TAG;
 export const airlinesSlice = createApi({
   reducerPath: 'airlinesSlice',
-  baseQuery: fetchBaseQuery({baseUrl: backendUrl}),
-  tagTypes: ['Airlines'],
+  baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
+  tagTypes: [AIRLINES_TAG],
   endpoints: (builder) => ({
     getAirlines: builder.query<IAirline[], void>({
       query: () => 'airlines',
-      providesTags: ['Airlines'],
+      providesTags: [AIRLINES_TAG],
     }),
     getAirlineById: builder.query<IAirline, number>({
       query: (id) => `airlines/${id}`,
@@ -20,7 +21,7 @@ export const airlinesSlice = createApi({
         method: 'POST',
         body: body,
       }),
-      invalidatesTags: ['Airlines'],
+      invalidatesTags: [AIRLINES_TAG],
     }),
     editAirline: builder.mutation<IAirline, IAirlineEditPayload>({
       query: ({id, body}) => ({
@@ -28,14 +29,14 @@ export const airlinesSlice = createApi({
         method: 'PUT',
         body: body,
       }),
-      invalidatesTags: ['Airlines'],
+      invalidatesTags: [AIRLINES_TAG],
     }),
     deleteAirline: builder.mutation<void, number>({
       query: (id) => ({
         url: `airlines/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Airlines'],
+      invalidatesTags: [AIRLINES_TAG],
     })
   }),
 });
