@@ -1,7 +1,4 @@
 {
-  "dashboard": {
-    "title": "Dashboard"
-  },
   "airlines": {
     "title": "Airlines",
     "create": "Add new airline",
@@ -70,7 +67,7 @@
     "details": "Details",
     "go-back": "Go Back",
     "submit": "Submit",
-    "ok": "Ok",
+    "close": "Close",
     "cancel": "Cancel",
     "delete": "Delete"
   },

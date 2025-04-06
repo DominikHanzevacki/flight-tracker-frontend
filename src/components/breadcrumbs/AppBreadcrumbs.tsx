@@ -20,7 +20,7 @@ export const AppBreadcrumbs = <T extends { id: number, name: string }>({
       const url = `/${pathListItems.slice(0, index + 1).join('/')}`;
 
       const title = selectedRow && parseInt(item) === selectedRow.id ? capitalizeFirstLetter(selectedRow.name) : t(item + '.title');
-      
+
       return {
         key: url,
         title: title,
@@ -30,7 +30,7 @@ export const AppBreadcrumbs = <T extends { id: number, name: string }>({
     items.unshift({
       key: '/',
       title: t('general.home'),
-      href: '/',
+      href: '/airports-live-location',
     })
     return items;
   }, [location.pathname, pathListItems, selectedRow, t]);

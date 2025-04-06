@@ -1,7 +1,4 @@
 {
-  "dashboard": {
-    "title": "Nadzorna ploča"
-  },
   "airlines": {
     "title": "Zračne kompanije",
     "create": "Dodaj novu zračnu kompaniju",
@@ -70,7 +67,7 @@
     "details": "Detalji",
     "go-back": "Vratite se",
     "submit": "Pošalji",
-    "ok": "U redu",
+    "close": "Zatvori",
     "cancel": "Odustani",
     "delete": "Obriši"
   },

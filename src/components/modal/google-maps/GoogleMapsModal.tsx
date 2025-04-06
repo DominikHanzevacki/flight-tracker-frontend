@@ -1,4 +1,4 @@
-import {Modal} from "antd";
+import {Button, Modal} from "antd";
 import type {GenericModalProps} from "@interfaces/google-maps/interface";
 import {useTranslation} from "react-i18next";
 
@@ -15,11 +15,11 @@ export const GoogleMapsModal = <T extends { id: number, name: string }, >({
       title={selectedRow?.name}
       open={isModalOpen}
       onCancel={handleModalClose}
-      onOk={handleModalClose}
-      okText={t('general.ok')}
-      cancelText={t('general.cancel')}
-      okButtonProps={{className: "!bg-blue-light hover:!bg-primary"}}
-      cancelButtonProps={{className: "hover:!border-blue-light hover:!text-blue-light"}}
+      footer={[
+        <Button key="close" type="primary" onClick={handleModalClose} className="!bg-blue-light hover:!bg-primary">
+          {t('general.close')}
+        </Button>
+      ]}
     >
       <div className="pt-3">
         {children}
