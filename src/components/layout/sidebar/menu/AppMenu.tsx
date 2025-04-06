@@ -9,7 +9,7 @@ import {useTranslation} from "react-i18next";
 export const AppMenu = () => {
   const {t} = useTranslation();
   const location = useLocation();
-  const selectedKey = useMemo(() => {
+  const selectedKeys = useMemo(() => {
     const tags = [
       COUNTRIES_TAG,
       AIRPORTS_TAG,
@@ -41,7 +41,7 @@ export const AppMenu = () => {
       className="!bg-primary"
       mode="inline"
       items={items}
-      defaultSelectedKeys={[selectedKey]}
+      selectedKeys={[selectedKeys]}
     />
   )
 }

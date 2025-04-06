@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router";
+import {createBrowserRouter, Navigate} from "react-router";
 import {Airlines} from "@pages/airlines/Airlines";
 import {AirlineDetails} from "@pages/airlines/details/AirlineDetails";
 import App from "../../App";
@@ -13,6 +13,10 @@ export const routes = createBrowserRouter([
     element: <App/>,
     errorElement: <NotFound/>,
     children: [
+      {
+        path: "/",
+        element: <Navigate to="/airports-live-location" replace />,
+      },
       {
         path: 'airlines',
         element: <Airlines/>,
